@@ -1,9 +1,11 @@
 sudo: required
+language: generic
+
 services:
   - docker
-  
+
 before_install:
   - docker build -t denis/docker-react -f Dockerfile.dev .
 
-script: 
-  - docker run denis/docker-react npm run test -- --coverage
+script:
+  - docker run -e CI=true denis/docker-react npm run test
